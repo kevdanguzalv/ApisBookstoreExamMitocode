@@ -6,16 +6,18 @@ using Services.Interface;
 namespace ApisEvaluacionIFinalFullStack.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class ClientesController :  ControllerBase
+    [Route("api/[controller]")]
+    public class LibrosController :  ControllerBase
     {
-        private readonly ILogger<ClientesController> _logger;
-        private readonly IClientesService service;
-        public ClientesController(ILogger<ClientesController> logger,IClientesService service)
+        private readonly ILogger<LibrosController> _logger;
+        private readonly ILibrosService service;
+        public LibrosController(ILogger<LibrosController> logger,ILibrosService service)
         {
             _logger = logger;
             this.service = service;
         }
+
+
 
         [HttpGet]
         public async Task<IActionResult> Get()
@@ -33,7 +35,7 @@ namespace ApisEvaluacionIFinalFullStack.Controllers
 
         [HttpPost]
         
-        public async Task<IActionResult> Post(ClientesRequestDto genreRequestDto)
+        public async Task<IActionResult> Post(LibrosRequestDto genreRequestDto)
         {
             var response = await service.AddAsync(genreRequestDto);
             return response.Success ? Ok(response) : BadRequest(response);
@@ -41,7 +43,7 @@ namespace ApisEvaluacionIFinalFullStack.Controllers
 
         [HttpPut("{id:int}")]
         
-        public async Task<IActionResult> Put(int id, ClientesRequestDto genreRequestDto)
+        public async Task<IActionResult> Put(int id, LibrosRequestDto genreRequestDto)
         {
             var response = await service.UpdateAsync(id, genreRequestDto);
             return response.Success ? Ok(response) : BadRequest(response);

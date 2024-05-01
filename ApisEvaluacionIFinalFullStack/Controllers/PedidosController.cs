@@ -5,7 +5,7 @@ using Services.Interface;
 namespace ApisEvaluacionIFinalFullStack.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class PedidosController : ControllerBase
     {
         private readonly ILogger<PedidosController> _logger;
